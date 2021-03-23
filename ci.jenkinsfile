@@ -18,10 +18,14 @@ pipeline{
         
         stage("AntBuild"){
             steps{
-                script{                  
-                    antHome = tool "ANT"
-                    //bat """${antHome}/bin/ant -v""" 
-                    bat """${antHome}/bin/ant ${buildShell}"""
+                script{
+                    try{
+                        antHome = tool "ANT"
+                        //bat """${antHome}/bin/ant -v""" 
+                        bat """${antHome}/bin/ant ${buildShell}"""
+                    } catch(e){
+                        println(e)
+                    }
                 }
             }
         }
