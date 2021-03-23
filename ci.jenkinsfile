@@ -10,8 +10,8 @@ pipeline{
             steps{
                 script{                  
                     mvnHome = tool "M2"
-                    bat """${mvnHome}/bin/mvn -v"""
-                    //bat """${mvnHome}/bin/mvn ${buildShell}""" 
+                    //bat """${mvnHome}/bin/mvn -v"""
+                    bat """${mvnHome}/bin/mvn ${buildShell}""" 
                 }
             }
         }
@@ -20,8 +20,8 @@ pipeline{
             steps{
                 script{                  
                     antHome = tool "ANT"
-                    bat """${antHome}/bin/ant -v""" 
-                    //bat """${antHome}/bin/ant ${buildShell}"""
+                    //bat """${antHome}/bin/ant -v""" 
+                    bat """${antHome}/bin/ant ${buildShell}"""
                 }
             }
         }
