@@ -6,7 +6,7 @@ pipeline{
     agent { node { label "master"}}
   
     stages{
-        stage("mavenbuild"){
+        stage("MavenBuild"){
             steps{
                 script{                  
                     mvnHome = tool "M2"
@@ -16,12 +16,22 @@ pipeline{
             }
         }
         
-        stage("antbuild"){
+        stage("AntBuild"){
             steps{
                 script{                  
                     antHome = tool "ANT"
                     //bat """${antHome}/bin/ant -v""" 
                     bat """${antHome}/bin/ant ${buildShell}"""
+                }
+            }
+        }
+        
+        stage("GradleBuild"){
+            steps{
+                script{                  
+                    gradleHome = tool "GRADLE"
+                    //bat """${gradleHome}/bin/gradle -v""" 
+                    bat """${gradleHome}/bin/gradle ${buildShell}"""
                 }
             }
         }
